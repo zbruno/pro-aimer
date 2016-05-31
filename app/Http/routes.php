@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'web'], function () {
+  Route::auth();
+
+  Route::get('/{optional?}', [
+    'as' => 'app',
+    'uses' => 'HomeController@index'
+  ])->where('optional', '(.*)');
 });
+
+foreach (File::allFiles(__DIR__.'/Routes') as $partial) {
+  require $partial->getPathName();
+}
