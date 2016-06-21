@@ -14,10 +14,15 @@
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/{optional?}', [
+    Route::get('/app/{optional?}', [
         'as' => 'app',
         'uses' => 'HomeController@index'
     ])->where('optional', '(.*)');
+
+    Route::get('/', [
+        'as' => 'welcome',
+        'uses' => 'WelcomeController@index'
+    ]);
 });
 
 foreach (File::allFiles(__DIR__.'/Routes') as $partial) {
