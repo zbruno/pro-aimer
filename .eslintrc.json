@@ -1,7 +1,16 @@
 {
-    "extends": "airbnb",
-    "installedESLint": true,
-    "plugins": [
-        "react"
-    ]
+  "extends": "airbnb",
+  "installedESLint": true,
+  "plugins": [
+    "react"
+  ],
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "rules": {
+    "comma-dangle": 0,
+    "jsx-quotes": ["error", "prefer-single"],
+    "no-multi-comp": 0,
+    "prop-types": 0
+  }
 }
